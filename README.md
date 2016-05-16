@@ -1,2 +1,2 @@
 # AgendaMe
-Sistema de Agendamento Online de Saláo de Beleza
+Sistema de Agendamento Online de Salão de Beleza
