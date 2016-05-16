@@ -1,0 +1,29 @@
+﻿@model AgendaMeMVC3.Models.Estabelecimento
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="admtitle2"><a href="#">Excluir Estabelecimento</a></h2>
+
+<h3>Deseja realmente excluir o Estabelecimento?</h3>
+<fieldset>
+    <legend>Estabelecimento</legend>
+    
+    <div class="display-label">CNPJ</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DsCpfCnpj)
+    </div>
+
+    <div class="display-label">Estabelecimento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DsNome)
+    </div>
+
+</fieldset>
+@using (Html.BeginForm(Model)) {
+    <p>
+        <input type="submit" value="Excluir" /> |
+        @Html.ActionLink("Voltar a Lista", "Index")
+    </p>
+}

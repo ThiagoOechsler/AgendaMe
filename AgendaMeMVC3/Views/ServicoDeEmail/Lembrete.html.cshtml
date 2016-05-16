@@ -1,0 +1,29 @@
+﻿@model AgendaMeMVC3.Models.Cliente
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Lembrete</title>
+<style type="text/css">
+    h1{color=Blue;}
+    .page{width:200px; margin:10px auto; border: 15px,solid,black;}
+</style>
+</head>
+<body>
+<div class= "page">
+<h1>
+    Olá @Model.Pessoa.DsNome,</h1>
+    <p>Você possui o serviço "Corte de cabelo" agendado para o dia <b>"01/12/2011 14:00"!</b></p>
+   Att,
+   <p>Cabelos e Cia!</p>
+   <p>(47) 3333-2211</p>
+   <p>www.cabeloseciatcc.com</p>
+   
+   
+</div>
+</body>
+</html>

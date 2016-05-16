@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.TipoServico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Tipos de Serviços</a></h2>
+
+<p>
+    @Html.ActionLink("Novo Tipo de Serviço", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("TipoServicos")  //Se voce der o nome aqui, o CSS vai aplicar 
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdTipoServico).RouteKey("CdTipoServico"))
+                .DataBinding(dataBinding => dataBinding
+                    //Server binding
+                    .Server()
+                    //Home.Delete deletes an existing data record
+                        .Delete("Delete", "TipoServico", Model)
+                )
+
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdTipoServico))
+                .DataBinding(dataBinding => dataBinding
+                    //Server binding
+                    .Server()
+                    //Home.Index renders the grid initially
+                        .Select("Edit", "TipoServico")
+                    //Home.Update updates an existing data record
+                        .Update("Edit", "TipoServico")
+                )                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.Estabelecimento.DsNome).Title("Estabelecimento").Width(150);
+                    columns.Bound(o => o.DsNome).Title("Tipo de Serviço").Width(300);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                    
+                      
+                })
+                .Render();
+            }
+</p>

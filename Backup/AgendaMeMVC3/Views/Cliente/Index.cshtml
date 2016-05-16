@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Clientes</a></h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Clientes")  //Se voce der o nome aqui, o CSS vai aplicar              
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdCliente).RouteKey("CdCliente"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Delete("Delete", "Cliente", Model)
+                )
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdCliente))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Cliente")
+                        .Update("Edit", "Cliente")
+                )
+                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.Pessoa.DsCpfCnpj).Title("CPF/CNPJ").Width(100);
+                    columns.Bound(o => o.Pessoa.DsNome).Title("Nome").Width(100);
+                    columns.Bound(o => o.Pessoa.DsSobrenome).Title("Sobrenome").Width(100);
+                    columns.Bound(o => o.DtNascimento).Title("Data Nascimento").Width(100);
+                    columns.Bound(o => o.Pessoa.DsFone1).Title("Telefone").Width(70);
+                    columns.Bound(o => o.Pessoa.DsFone2).Title("Celular").Width(70);
+                    columns.Bound(o => o.Pessoa.DsEmail).Title("E-mail").Width(100);
+                    //columns.Bound(o => o.BooLembrar).Title("Lembrete?").Width(100);
+                    columns.Bound(o => o.Pessoa.DsLogin).Title("Login").Width(70);
+                    columns.Bound(o => o.Pessoa.DsSenha).Title("Senha").Width(70);
+                    
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                      
+                })
+                .Render();
+            }
+</p>

@@ -1,0 +1,131 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.AgendamentoModel>
+
+@{
+    ViewBag.Title = "AgendaIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btpesquisar').click(function () {
+
+            var servico = $('#txservico').val();
+            var profissional = $('#txprofissional').val();
+            var cidade = $('#txcidade').val();
+            var bairro = $('#txbairro').val();
+            var horario = $('#txhorario').val();
+            
+            var uri = '@Url.Action("IndexPesquisa", "Agenda")';
+            uri += "?servico=" + servico + "&profissional=" + profissional + "&cidade=" + cidade + "&bairro=" + bairro + "&horario=" + horario;
+            $(window.location).attr('href', uri);
+        });
+    });
+</script>
+
+<script type="text/javascript"> 
+        function init() {
+            //sections = lista de profissionais
+            var sections = [
+                @{
+                    var profis = Model.First();
+                    for(var i=0; i < profis.Profissionais.Count; i++){
+                <text>{key:@profis.Profissionais[i].CdProfissional , label:"@profis.Profissionais[i].Pessoa.DsNomeCompleto"}@(i<profis.Profissionais.Count-1 ? "," : "")</text> 
+                    }
+                    } ];   
+             
+             //servicos = lista de serviços
+             var servicos = [
+                @{
+                    var serv = Model.First();
+                    for(var i=0; i < serv.Servicos.Count; i++){
+                <text>{key:@serv.Servicos[i].CdServico , label:"@serv.Servicos[i].DsNome"}@(i<serv.Servicos.Count-1 ? "," : "")</text> 
+                    }
+                    } ];
+
+            var clientes = [
+                @{
+                    var cli = Model.First();
+                    for(var i=0; i < cli.Clientes.Count; i++){
+                <text>{key:@cli.Clientes[i].CdCliente , label:"@cli.Clientes[i].Pessoa.DsNome"}@(i<cli.Clientes.Count-1 ? "," : "")</text> 
+                    }
+                    } ];
+                   
+            
+            scheduler.config.first_hour = 8;
+            scheduler.config.last_hour = 19;                         
+
+            scheduler.locale.labels.unit_tab = "Salão";
+            scheduler.locale.labels.day_tab = "Dia";
+            scheduler.locale.labels.week_tab = "Semana";
+            scheduler.locale.labels.month_tab = "Mês";
+            scheduler.locale.labels.today_button = "Hoje";
+            scheduler.locale.labels.section_custom = "Section";
+            scheduler.config.details_on_create = true;
+            scheduler.config.details_on_dblclick = true;
+            scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+
+            scheduler.config.event_duration = 60;
+
+            scheduler.config.lightbox.sections = [
+			    { name: "profissional", height: 23, type: "select", options: sections, map_to: "section_id", focus: true },
+                { name: "servico", height: 23, type: "select", options: servicos, map_to: "servico_id" },
+                { name: "cliente", height: 23, type: "select", options: clientes, map_to: "cliente_id" }
+		    ]
+
+            scheduler.locale.labels.section_profissional = "Profissional";
+            scheduler.locale.labels.section_servico = "Serviço";
+            scheduler.locale.labels.section_cliente = "Clientes";
+
+            scheduler.createUnitsView({
+                name: "unit",
+                property: "section_id",
+                list: sections
+            });
+            scheduler.config.multi_day = false;
+
+            var dt = new Date();
+
+            scheduler.init('scheduler_here', new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()), "unit");
+            scheduler.load("/Agenda/DataAdmin");
+
+            //data saving
+            var dp = new dataProcessor("/Agenda/Save");
+            dp.init(scheduler);
+            dp.setTransactionMode("POST", false);
+
+	    }
+        dhtmlxEvent(document.body, "load", init);
+</script>
+
+
+
+<h2 class="title2"><a href="#">Agenda</a></h2>       
+    
+@{ var livres = Model.First();
+   if (livres.Action == "IndexAdmin") 
+   {
+        <p class="legenda2">
+        As linhas rosas e brancas representam horários livres.
+        As caixas representam horários marcados.
+        </p>
+
+        //Cria o componente Scheduler na visão do Admin (mais largo)
+        <div id="scheduler_here" class="dhx_cal_container" style='width:980px; height:600px;'>
+		        <div class="dhx_cal_navline">
+			        <div class="dhx_cal_prev_button">&nbsp;</div>
+			        <div class="dhx_cal_next_button">&nbsp;</div>
+			        <div class="dhx_cal_today_button">Hoje</div>
+			        <div class="dhx_cal_date"></div>
+			        <div class="dhx_cal_tab" name="day_tab" style="right:204px;">Dia</div>
+			        <div class="dhx_cal_tab" name="week_tab" style="right:140px;">Semana</div>
+			        <div class="dhx_cal_tab" name="unit_tab" style="right:280px;">Profissional</div>
+			        <div class="dhx_cal_tab" name="month_tab" style="right:76px;">Mes</div>
+		        </div>
+		        <div class="dhx_cal_header">
+		        </div>
+		        <div class="dhx_cal_data">
+		        </div>		
+        </div>
+        
+   }
+}

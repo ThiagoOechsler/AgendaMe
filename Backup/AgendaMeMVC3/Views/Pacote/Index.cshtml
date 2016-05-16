@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Pacote>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Pacotes</a></h2>
+
+<p>
+    @Html.ActionLink("Novo Pacote", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Pacotes")  //Se voce der o nome aqui, o CSS vai aplicar 
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdPacote).RouteKey("CdPacote"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Delete("Delete", "Pacote", Model)
+                )
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdPacote))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Pacote")
+                        .Update("Edit", "Pacote")
+                )
+                
+                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.DsPacote).Title("Nome do pacote").Width(300);
+                    columns.Bound(o => o.NrValor).Title("Valor").Width(120);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                })
+                .Render();
+            }
+</p>

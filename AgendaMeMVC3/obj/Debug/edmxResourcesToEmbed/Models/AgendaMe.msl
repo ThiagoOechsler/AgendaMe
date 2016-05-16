@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgendaMeModelStoreContainer" CdmEntityContainer="AgendaMeEntities">
+    <EntitySetMapping Name="Agenda">
+      <EntityTypeMapping TypeName="AgendaMeModel.Agenda">
+        <MappingFragment StoreEntitySet="Agenda">
+          <ScalarProperty Name="CdAgenda" ColumnName="CdAgenda" />
+          <ScalarProperty Name="CdCliente" ColumnName="CdCliente" />
+          <ScalarProperty Name="CdProfissional" ColumnName="CdProfissional" />
+          <ScalarProperty Name="CdServico" ColumnName="CdServico" />
+          <ScalarProperty Name="DsMotivoCancel" ColumnName="DsMotivoCancel" />
+          <ScalarProperty Name="DtCadastro" ColumnName="DtCadastro" />
+          <ScalarProperty Name="DtInicio" ColumnName="DtInicio" />
+          <ScalarProperty Name="DtFim" ColumnName="DtFim" />
+          <ScalarProperty Name="DtCancelamento" ColumnName="DtCancelamento" />
+          <ScalarProperty Name="DtConclusao" ColumnName="DtConclusao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bairro">
+      <EntityTypeMapping TypeName="AgendaMeModel.Bairro">
+        <MappingFragment StoreEntitySet="Bairro">
+          <ScalarProperty Name="CdBairro" ColumnName="CdBairro" />
+          <ScalarProperty Name="DsBairro" ColumnName="DsBairro" />
+          <ScalarProperty Name="CdCidade" ColumnName="CdCidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cidade">
+      <EntityTypeMapping TypeName="AgendaMeModel.Cidade">
+        <MappingFragment StoreEntitySet="Cidade">
+          <ScalarProperty Name="CdCidade" ColumnName="CdCidade" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="AgendaMeModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="CdCliente" ColumnName="CdCliente" />
+          <ScalarProperty Name="BooLembrar" ColumnName="BooLembrar" />
+          <ScalarProperty Name="DtNascimento" ColumnName="DtNascimento" />
+          <ScalarProperty Name="CdPessoa" ColumnName="CdPessoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="AgendaMeModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="CdEmpresa" ColumnName="CdEmpresa" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estabelecimento">
+      <EntityTypeMapping TypeName="AgendaMeModel.Estabelecimento">
+        <MappingFragment StoreEntitySet="Estabelecimento">
+          <ScalarProperty Name="CdEmpresa" ColumnName="CdEmpresa" />
+          <ScalarProperty Name="CdEstabelecimento" ColumnName="CdEstabelecimento" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+          <ScalarProperty Name="NrCep" ColumnName="NrCep" />
+          <ScalarProperty Name="DsRua" ColumnName="DsRua" />
+          <ScalarProperty Name="HrAtendInicioManha" ColumnName="HrAtendInicioManha" />
+          <ScalarProperty Name="HrAtendFimManha" ColumnName="HrAtendFimManha" />
+          <ScalarProperty Name="HrAtendInicioTarde" ColumnName="HrAtendInicioTarde" />
+          <ScalarProperty Name="HrAtendFimTarde" ColumnName="HrAtendFimTarde" />
+          <ScalarProperty Name="DsCpfCnpj" ColumnName="DsCpfCnpj" />
+          <ScalarProperty Name="DsFone1" ColumnName="DsFone1" />
+          <ScalarProperty Name="DsFone2" ColumnName="DsFone2" />
+          <ScalarProperty Name="CdBairro" ColumnName="CdBairro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacote">
+      <EntityTypeMapping TypeName="AgendaMeModel.Pacote">
+        <MappingFragment StoreEntitySet="Pacote">
+          <ScalarProperty Name="CdPacote" ColumnName="CdPacote" />
+          <ScalarProperty Name="CdPromocao" ColumnName="CdPromocao" />
+          <ScalarProperty Name="DsPacote" ColumnName="DsPacote" />
+          <ScalarProperty Name="NrValor" ColumnName="NrValor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pessoa">
+      <EntityTypeMapping TypeName="AgendaMeModel.Pessoa">
+        <MappingFragment StoreEntitySet="Pessoa">
+          <ScalarProperty Name="CdUser" ColumnName="CdUser" />
+          <ScalarProperty Name="CdPessoa" ColumnName="CdPessoa" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+          <ScalarProperty Name="DsEmail" ColumnName="DsEmail" />
+          <ScalarProperty Name="DsFone1" ColumnName="DsFone1" />
+          <ScalarProperty Name="DsFone2" ColumnName="DsFone2" />
+          <ScalarProperty Name="DsLogin" ColumnName="DsLogin" />
+          <ScalarProperty Name="DsSenha" ColumnName="DsSenha" />
+          <ScalarProperty Name="DsCpfCnpj" ColumnName="DsCpfCnpj" />
+          <ScalarProperty Name="DsSobrenome" ColumnName="DsSobrenome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profissional">
+      <EntityTypeMapping TypeName="AgendaMeModel.Profissional">
+        <MappingFragment StoreEntitySet="Profissional">
+          <ScalarProperty Name="CdProfissional" ColumnName="CdProfissional" />
+          <ScalarProperty Name="DsOcupacao" ColumnName="DsOcupacao" />
+          <ScalarProperty Name="HrAtendInicioManha" ColumnName="HrAtendInicioManha" />
+          <ScalarProperty Name="HrAtendInicioTarde" ColumnName="HrAtendInicioTarde" />
+          <ScalarProperty Name="HrAtendFimManha" ColumnName="HrAtendFimManha" />
+          <ScalarProperty Name="HrAtendFimTarde" ColumnName="HrAtendFimTarde" />
+          <ScalarProperty Name="CdPessoa" ColumnName="CdPessoa" />
+          <ScalarProperty Name="CdEstabelecimento" ColumnName="CdEstabelecimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promocao">
+      <EntityTypeMapping TypeName="AgendaMeModel.Promocao">
+        <MappingFragment StoreEntitySet="Promocao">
+          <ScalarProperty Name="CdPromocao" ColumnName="CdPromocao" />
+          <ScalarProperty Name="CdEstabelecimento" ColumnName="CdEstabelecimento" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+          <ScalarProperty Name="DtCadastro" ColumnName="DtCadastro" />
+          <ScalarProperty Name="DtFim" ColumnName="DtFim" />
+          <ScalarProperty Name="DtInicio" ColumnName="DtInicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servico">
+      <EntityTypeMapping TypeName="AgendaMeModel.Servico">
+        <MappingFragment StoreEntitySet="Servico">
+          <ScalarProperty Name="CdServico" ColumnName="CdServico" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+          <ScalarProperty Name="CdTipoServico" ColumnName="CdTipoServico" />
+          <ScalarProperty Name="NrDuracaoHoras" ColumnName="NrDuracaoHoras" />
+          <ScalarProperty Name="NrDuracaoMinutos" ColumnName="NrDuracaoMinutos" />
+          <ScalarProperty Name="ChSexo" ColumnName="ChSexo" />
+          <ScalarProperty Name="CdProfissional" ColumnName="CdProfissional" />
+          <ScalarProperty Name="NrValor" ColumnName="NrValor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoServico">
+      <EntityTypeMapping TypeName="AgendaMeModel.TipoServico">
+        <MappingFragment StoreEntitySet="TipoServico">
+          <ScalarProperty Name="CdTipoServico" ColumnName="CdTipoServico" />
+          <ScalarProperty Name="CdEstabelecimento" ColumnName="CdEstabelecimento" />
+          <ScalarProperty Name="DsNome" ColumnName="DsNome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PacoteServico" TypeName="AgendaMeModel.PacoteServico" StoreEntitySet="PacoteServico">
+      <EndProperty Name="Pacote">
+        <ScalarProperty Name="CdPacote" ColumnName="CdPacote" />
+      </EndProperty>
+      <EndProperty Name="Servico">
+        <ScalarProperty Name="CdServico" ColumnName="CdServico" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProfissionalServico" TypeName="AgendaMeModel.ProfissionalServico" StoreEntitySet="ProfissionalServico">
+      <EndProperty Name="Profissional">
+        <ScalarProperty Name="CdProfissional" ColumnName="CdProfissional" />
+      </EndProperty>
+      <EndProperty Name="Servico">
+        <ScalarProperty Name="CdServico" ColumnName="CdServico" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

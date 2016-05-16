@@ -1,0 +1,37 @@
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\bin\AgendaMeMVC3.dll
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\bin\AgendaMeMVC3.pdb
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\bin\EntityFramework.dll
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\bin\EntityFramework.xml
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\ResolveAssemblyReference.cache
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.dll
+D:\TCC\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.pdb
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\Telerik.Web.Mvc.xml
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\AgendaMeMVC3.dll
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\AgendaMeMVC3.pdb
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\EntityFramework.dll
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\Telerik.Web.Mvc.dll
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\EntityFramework.xml
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\ResolveAssemblyReference.cache
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.dll
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.pdb
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\bin\AgendaMeMVC3.dll
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\bin\AgendaMeMVC3.pdb
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\bin\EntityFramework.dll
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\bin\Telerik.Web.Mvc.dll
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\bin\EntityFramework.xml
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\bin\Telerik.Web.Mvc.xml
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\obj\Debug\ResolveAssemblyReference.cache
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.dll
+C:\THO\AgendaMeMVC3 - Cópia SCHEDULER Sem dados\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.pdb
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\ActionMailer.Net.dll
+C:\THO\AgendaMeMVC3\AgendaMeMVC3\bin\ActionMailer.Net.Mvc.dll
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\AgendaMeMVC3.dll
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\AgendaMeMVC3.pdb
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\ActionMailer.Net.dll
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\ActionMailer.Net.Mvc.dll
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\EntityFramework.dll
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\EntityFramework.xml
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\bin\Telerik.Web.Mvc.xml
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.csprojResolveAssemblyReference.cache
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.dll
+C:\PROJETOS_BACKUP\AgendaMeMVC3\AgendaMeMVC3\AgendaMeMVC3\obj\Debug\AgendaMeMVC3.pdb

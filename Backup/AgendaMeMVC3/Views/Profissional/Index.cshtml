@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Profissional>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Profissionais</a></h2>
+
+<p>
+    @Html.ActionLink("Novo Profissional", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Profissionais")  //Se voce der o nome aqui, o CSS vai aplicar              
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdProfissional).RouteKey("CdProfissional"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Delete("Delete", "Profissional", Model)
+                )
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdProfissional))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Profissional")
+                        .Update("Edit", "Profissional")
+                )
+                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.Pessoa.DsCpfCnpj).Title("CPF/CNPJ").Width(250);
+                    columns.Bound(o => o.Pessoa.DsNome).Title("Nome").Width(250);
+                    columns.Bound(o => o.Pessoa.DsSobrenome).Title("Sobrenome").Width(250);
+                    columns.Bound(o => o.Pessoa.DsFone1).Title("Telefone").Width(250);
+                    columns.Bound(o => o.DsOcupacao).Title("Especialização").Width(250);
+                    columns.Bound(o => o.HrAtendInicioManha).Title("Manha Ini.").Width(50);
+                    columns.Bound(o => o.HrAtendFimManha).Title("Manha Fin.").Width(50);
+                    columns.Bound(o => o.HrAtendInicioTarde).Title("Tarde Ini.").Width(50);
+                    columns.Bound(o => o.HrAtendFimTarde).Title("Tarde Fin.").Width(50);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(130).Title("Opções");
+                      
+                })
+                .Render();
+            }
+</p>

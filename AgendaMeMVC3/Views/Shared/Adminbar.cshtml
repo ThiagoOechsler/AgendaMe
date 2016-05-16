@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Adminbar";
+}
+
+<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Promoções</h2>
+				<ul>
+					<li>@Html.ActionLink("Promoção de Noivas", "Index", "Pacote")</li>
+					<li>@Html.ActionLink("Promoção de Reveillon", "Index", "Bairro")</li>
+				</ul>
+			</li>
+			<li>
+				<h2>Serviços</h2>
+				<ul>
+					<li><a href="#">Cabelos</a></li>
+					<li><a href="#">Manicure</a></li>
+					<li><a href="#">Bronzeamento</a></li>
+					<li><a href="#">Estetica facial</a></li>
+					<li><a href="#">Peeling</a></li>
+                    @*<li>@Html.ActionLink("Pacote Noivas", "Index", "Pacote")</li>*@
+				</ul>
+			</li>
+			<li>
+				<h2>Profissionais</h2>
+				<ul>
+					<li><a href="#">Wellington Schmidt</a> Maquiagem</li>
+					<li><a href="#">Thiago Oechsler</a> Bronzeamento</li>
+					<li><a href="#">Jose Ricardo</a> Cabelo</li>
+					<li><a href="#">Mauricio Potter</a> Estetica facial</li>
+					<li><a href="#">Diego Becker</a> Cabelo</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->

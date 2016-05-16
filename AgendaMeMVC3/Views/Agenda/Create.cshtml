@@ -1,0 +1,97 @@
+﻿@model AgendaMeMVC3.Models.Agenda
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="admtitle2"><a href="#">Cadastrar Agendamento</a></h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Agenda</legend>
+
+        <div class="editor-label">
+                Serviço
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CdServico) 
+                @Html.ValidationMessageFor(model => model.CdServico)
+            </div>
+
+            <div class="editor-label">
+                Profissional
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CdProfissional)
+                @Html.ValidationMessageFor(model => model.CdProfissional)
+            </div>
+                      
+            <div class="editor-label">
+               Cliente
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CdCliente)                
+                @Html.ValidationMessageFor(model => model.CdCliente)
+            </div>
+            
+            <div class="editor-label">
+                Data Cadastro
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DtCadastro, new { @class = "formatoData" })  
+                @Html.ValidationMessageFor(model => model.DtCadastro)
+            </div>
+
+            <div class="editor-label">
+                Horário Inicial
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DtInicio, new { @class = "formatoData" })  
+                @Html.ValidationMessageFor(model => model.DtInicio)
+            </div>
+            
+            <div class="editor-label">
+                Horário Final
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DtFim, new { @class = "formatoData" })  
+                @Html.ValidationMessageFor(model => model.DtFim)
+            </div>
+
+            <div class="editor-label">
+                Data Conclusão
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DtConclusao, new { @class = "formatoData" })  
+                @Html.ValidationMessageFor(model => model.DtConclusao)
+            </div>
+            
+            <div class="editor-label">
+                Data Cancelamento
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DtCancelamento, new { @class = "formatoData" })  
+                @Html.ValidationMessageFor(model => model.DtCancelamento)
+            </div>
+
+              <div class="editor-label">
+                Motivo do Cancelamento
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DsMotivoCancel)
+                @Html.ValidationMessageFor(model => model.DsMotivoCancel)
+            </div>
+
+        <p>
+            <input type="submit" value="Salvar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Voltar a Lista", "Index")
+</div>

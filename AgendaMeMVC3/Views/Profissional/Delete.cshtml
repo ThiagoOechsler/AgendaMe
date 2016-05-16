@@ -1,0 +1,53 @@
+﻿@model AgendaMeMVC3.Models.Profissional
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="admtitle2"><a href="#">Excluir Profissional</a></h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Profissional</legend>
+
+    <div class="display-label">DsOcupacao</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DsOcupacao)
+    </div>
+
+    <div class="display-label">HrAtendInicioManha</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HrAtendInicioManha)
+    </div>
+
+    <div class="display-label">HrAtendInicioTarde</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HrAtendInicioTarde)
+    </div>
+
+    <div class="display-label">HrAtendFimManha</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HrAtendFimManha)
+    </div>
+
+    <div class="display-label">HrAtendFimTarde</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HrAtendFimTarde)
+    </div>
+
+    <div class="display-label">Pessoa</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pessoa.DsNome)
+    </div>
+
+    <div class="display-label">Estabelecimento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estabelecimento.DsNome)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

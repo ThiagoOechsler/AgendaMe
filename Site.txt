@@ -1,0 +1,32 @@
+
+Desenha uma lista com hifens
+<div id="olist" class="boxed">
+			<h2 class="title">An Ordered List In A Box</h2>
+			<div class="content">
+				<ol>
+					<li><a href="#">Ut semper vestibulum est</a></li>
+					<li><a href="#">Vestibulum luctus enatis</a></li>
+					<li><a href="#">Integer rutrum nisl in mi</a></li>
+					<li><a href="#">Etiam malesuada rutrum</a></li>
+					<li><a href="#">Aenean elementum facilisis</a></li>
+					<li><a href="#">Ut tincidunt elit vitae</a></li>
+					<li><a href="#">Sed quis odio sagittis leo</a></li>
+				</ol>
+			</div>
+		</div>
+
+Desenha uma lista com bolinhas
+		
+		<div id="ulist" class="boxed">
+			<h2 class="title">Boxed Bulleted List</h2>
+			<div class="content">
+				<ul>
+					<li><a href="#">Etiam malesuada rutrum</a></li>
+					<li><a href="#">Aenean elementum facilisis</a></li>
+					<li><a href="#">Ut tincidunt elit vitae</a></li>
+					<li><a href="#">Sed quis odio sagittis leo</a></li>
+					<li><a href="#">Ut semper vestibulum est</a></li>
+					<li><a href="#">Vestibulum luctus enatis</a></li>
+					<li><a href="#">Integer rutrum nisl in mi</a></li>
+				</ul>
+			</div>

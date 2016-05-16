@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+    Response.ContentType = "text/xml";   
+}
+@model IEnumerable<AgendaMeMVC3.Models.Agenda>
+<data>
+    @foreach (var myevent in Model)
+    {
+       <event id="@myevent.CdAgenda">
+            <start_date><![CDATA[@String.Format("{0:yyyy/MM/dd HH:mm:ss}", myevent.DtInicio)]]></start_date>
+            <end_date><![CDATA[@String.Format("{0:yyyy/MM/dd HH:mm:ss}",myevent.DtFim)]]></end_date>
+            <text><![CDATA[@Html.Encode(myevent.Servico.DsNome)]]></text>
+            <section_id>@myevent.CdProfissional</section_id>           
+            <servico_id>@myevent.CdServico</servico_id>
+        </event>
+    } 
+</data>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Promocao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Promoções</a></h2>
+
+<p>
+    @Html.ActionLink("Nova Promoção", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Promocoes")  //Se voce der o nome aqui, o CSS vai aplicar              
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdPromocao).RouteKey("CdPromocao"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Delete("Delete", "Promocao", Model)
+                )
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdPromocao))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Promocao")
+                        .Update("Edit", "Promocao")
+                )                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.DsEstabelecimento).Title("Estabelecimento").Width(200);
+                    columns.Bound(o => o.DsNome).Title("Nome da Promoção").Width(300);
+                    columns.Bound(o => o.DtCadastro).Title("Data Cadastro").Width(100);
+                    columns.Bound(o => o.DtInicio).Title("Inicio promoção").Width(100);
+                    columns.Bound(o => o.DtFim).Title("Final promoção").Width(100);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                      
+                })
+                .Render();
+            }
+</p>

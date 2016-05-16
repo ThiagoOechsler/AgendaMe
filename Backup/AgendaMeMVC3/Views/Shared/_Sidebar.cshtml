@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "_sidebar";
+}
+
+    <!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Promoções</h2>
+				<ul>
+					<li>@Html.ActionLink("Promoção de Noivas", "Index", "Pacote")</li>
+					<li>@Html.ActionLink("Promoção de Reveillon", "Index", "Bairro")</li>
+				</ul>
+			</li>
+			<li>
+				<h2>Serviços</h2>
+				<ul>
+					<li><a href="#">Cabelo</a></li>
+					<li><a href="#">Maquiagem</a></li>
+					<li><a href="#">Depilação</a></li>
+					<li><a href="#">Bronzeamento Artificial</a></li>
+					<li><a href="#">Estética facial</a></li>
+                    <li><a href="#">Mãos e Pés</a></li>
+                    @*<li>@Html.ActionLink("Pacote Noivas", "Index", "Pacote")</li>*@
+				</ul>
+			</li>
+			<li>
+				<h2>Profissionais</h2>
+				<ul>
+					<li><a href="#">Alice Mara</a> Cabelo</li>
+					<li><a href="#">Maria Pereira</a> Cabelo</li>
+					<li><a href="#">Cida Cezerino</a> Maquiagem</li>
+                    <li><a href="#">Lu DaRossi</a> Depilação</li>
+					<li><a href="#">Joana Silva</a> Bronzeamento</li>
+					<li><a href="#">Tatiane Cunha</a> Estética facial</li>
+                    <li><a href="#">Ivete Luanda</a> Mãos e Pés</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->

@@ -1,0 +1,25 @@
+﻿@model AgendaMeMVC3.Models.Pacote
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="admtitle2"><a href="#">Excluir Pacote</a></h2>
+
+<h3>Deseja realmente excluir o Pacote?</h3>
+<fieldset>
+    <legend>Pacote</legend>
+    
+    <div class="display-label">Pacote</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DsPacote)
+    </div>
+
+  
+</fieldset>
+@using (Html.BeginForm(Model)) {
+    <p>
+        <input type="submit" value="Excluir" /> |
+        @Html.ActionLink("Voltar a Lista", "Index")
+    </p>
+}

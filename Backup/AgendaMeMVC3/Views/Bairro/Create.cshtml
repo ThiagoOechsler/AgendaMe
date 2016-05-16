@@ -1,0 +1,41 @@
+﻿@model AgendaMeMVC3.Models.Bairro
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2 class="admtitle2"><a href="#">Cadastrar Bairro</a></h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Bairro</legend>
+
+        <div class="editor-label">
+           Nome Bairro
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DsBairro)
+            @Html.ValidationMessageFor(model => model.DsBairro)
+        </div>
+
+        <div class="editor-label">
+            Cidade
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CdCidade, ViewData["LstCidade"] as SelectList)
+            @Html.ValidationMessageFor(model => model.CdCidade)
+        </div>
+
+        <p>
+            <button class="button" type="submit">Salvar</button>
+            @*<input type="submit" value="Salvar" />*@
+        </p>
+    </fieldset>
+}
+
+<div class="voltar">
+    @Html.ActionLink("Voltar a Lista", "Index")
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Estabelecimento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Estabelecimentos</a></h2>
+
+<p>
+    @Html.ActionLink("Novo Estabelecimento", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Estabelecimentos")  //Se voce der o nome aqui, o CSS vai aplicar              
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdEstabelecimento).RouteKey("CdEstabelecimento"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Delete("Delete", "Estabelecimento")
+                ).DataKeys(dataKeys => dataKeys.Add(o => o.CdEstabelecimento))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Estabelecimento")
+                        .Update("Edit", "Estabelecimento")
+                )
+                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.DsCpfCnpj).Title("CNPJ/CPF").Width(150);
+                    columns.Bound(o => o.DsNome).Title("Nome").Width(180);
+                    columns.Bound(o => o.DsFone1).Title("Telefone").Width(120);
+                    //columns.Bound(o => o.NrCep).Title("CEP").Width(60);
+                    columns.Bound(o => o.DsBairro).Title("Bairro").Width(150);
+                    columns.Bound(o => o.DsRua).Title("Rua").Width(200);
+                    //columns.Bound(o => o.DsEmpresa).Title("Empresa").Width(110);
+                    columns.Bound(o => o.DsHoraIniManha).Title("Inicio manhã").Width(50);
+                    columns.Bound(o => o.DsHoraFimManha).Title("Fim manhã.").Width(50);
+                    columns.Bound(o => o.DsHoraIniTarde).Title("Início tarde").Width(50);
+                    columns.Bound(o => o.DsHoraFimTarde).Title("Fim tarde").Width(50);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                      
+                })
+                .Render();
+            }
+</p>

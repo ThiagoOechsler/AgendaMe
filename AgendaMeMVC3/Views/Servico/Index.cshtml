@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Servico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Serviços</a></h2>
+
+<p>
+    @Html.ActionLink("Novo Serviço", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Servicos")  //Se voce der o nome aqui, o CSS vai aplicar              
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdServico).RouteKey("CdServico"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Servico")
+                        .Update("Edit", "Servico")
+                        .Delete("Delete", "Servico", Model)
+                )
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdServico))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Servico")
+                        .Update("Edit", "Servico")
+                )
+                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.DsNome).Title("Serviço").Width(200);
+                    columns.Bound(o => o.DsTipoServico).Title("Tipo Serviço").Width(300);
+                    columns.Bound(o => o.NrDuracaoHoras).Title("Duração em Horas").Width(100);
+                    columns.Bound(o => o.NrDuracaoMinutos).Title("Duração em Minutos").Width(100);
+                    columns.Bound(o => o.ChSexo).Title("Sexo").Width(100);
+
+                    columns.Bound(o => o.DsProfissional).Title("Profissional").Width(100);
+
+                    columns.Bound(o => o.NrValor).Title("Valor").Width(100);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                      
+                })
+                .Render();
+            }
+</p>

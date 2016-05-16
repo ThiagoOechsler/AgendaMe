@@ -1,0 +1,401 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.AgendamentoModel>
+
+@{
+    ViewBag.Title = "AgendaIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btpesquisar').click(function () {
+
+            var servico = $('#txservico').val();
+            var profissional = $('#txprofissional').val();
+            var cidade = $('#txcidade').val();
+            var bairro = $('#txbairro').val();
+            var horario = $('#txhorario').val();
+            
+            var uri = '@Url.Action("IndexPesquisa", "Agenda")';
+            uri += "?servico=" + servico + "&profissional=" + profissional + "&cidade=" + cidade + "&bairro=" + bairro + "&horario=" + horario;
+            $(window.location).attr('href', uri);
+        });
+    });
+</script>
+
+<script type="text/javascript"> 
+        function init() {
+            //sections = lista de profissionais
+            var sections = [
+                @{
+                    var profis = Model.First();
+                    for(var i=0; i < profis.Profissionais.Count; i++){
+                <text>{key:@profis.Profissionais[i].CdProfissional , label:"@profis.Profissionais[i].Pessoa.DsNomeCompleto"}@(i<profis.Profissionais.Count-1 ? "," : "")</text> 
+                    }
+                    } ];   
+             
+             //servicos = lista de serviços
+             var servicos = [
+                @{
+                    var serv = Model.First();
+                    for(var i=0; i < serv.Servicos.Count; i++){
+                <text>{key:@serv.Servicos[i].CdServico , label:"@serv.Servicos[i].DsNome"}@(i<serv.Servicos.Count-1 ? "," : "")</text> 
+                    }
+                    } ];
+                   
+            
+            scheduler.config.first_hour = 8;
+            scheduler.config.last_hour = 19;                         
+
+            scheduler.locale.labels.unit_tab = "Salão";
+            scheduler.locale.labels.day_tab = "Dia";
+            scheduler.locale.labels.week_tab = "Semana";
+            scheduler.locale.labels.month_tab = "Mês";
+            scheduler.locale.labels.today_button = "Hoje";
+            scheduler.locale.labels.section_custom = "Section";
+            scheduler.config.details_on_create = true;
+            scheduler.config.details_on_dblclick = true;
+            scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+
+            scheduler.config.event_duration = 60;
+
+            scheduler.config.lightbox.sections = [
+			    { name: "profissional", height: 23, type: "select", options: sections, map_to: "section_id", focus: true },
+                { name: "servico", height: 23, type: "select", options: servicos, map_to: "servico_id" }
+		    ]
+
+            scheduler.locale.labels.section_profissional = "Profissional";
+            scheduler.locale.labels.section_servico = "Serviço";
+
+            scheduler.createUnitsView({
+                name: "unit",
+                property: "section_id",
+                list: sections
+            });
+            scheduler.config.multi_day = false;
+
+            var dt = new Date();
+
+//            {var dado = Model.First();
+//                
+//                if ((dado.DataFiltro != DateTime.MinValue) && (dado.DataFiltro != DateTime.Today))
+//                {
+//                    int ano = dado.DataFiltro.Year;
+//                    int mes = dado.DataFiltro.Month;
+//                    int dia = dado.DataFiltro.Day;
+
+//                    : var dt = new Date(ano ,mes, dia); 
+//                }
+//            } 
+
+            scheduler.init('scheduler_here', new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()), "unit");
+            scheduler.load("/Agenda/Data");
+
+            //data saving
+            var dp = new dataProcessor("/Agenda/Save");
+            dp.init(scheduler);
+            dp.setTransactionMode("POST", false);
+
+	    }
+        dhtmlxEvent(document.body, "load", init);
+</script>
+
+
+
+<h2 class="title2"><a href="#">Agenda</a></h2>       
+
+<table class="busca">
+
+    <tr class="search">
+        <th>Serviço</th>
+        <th><input type="text" id="txservico" /></th>
+    </tr>
+
+    <tr class="search">
+        <th>Profissional</th>
+        <th><input type="text" id="txprofissional" /></th>
+    </tr>
+
+    <tr class="search">
+        <th>Cidade</th>
+        <th><input type="text" id="txcidade" /></th>
+    </tr>
+    <tr class="search">
+        <th>Bairro</th>
+        <th><input type="text" id="txbairro" /></th>
+    </tr>
+    <tr class="search">
+        <th>Data</th>
+        <th><input type="text" id="txhorario" /></th>
+    </tr>
+</table>
+<p>
+    <button class="button" id="btpesquisar">Pesquisar</button>
+</p>
+
+@{ var verifica = Model.First();
+
+   if (verifica.Action != "Index") 
+   {
+       if (string.IsNullOrWhiteSpace(verifica.ServicoFiltro))
+       {
+            <p class="legenda3">
+                É obrigatório informar o serviço!
+           </p>
+       } else 
+       {
+            if (verifica.DataFiltro == DateTime.MinValue)
+            {
+                <p class="legenda3">
+                    Informe uma data válida para pesquisa!
+                </p>
+            }
+            if (verifica.DataFiltro < DateTime.Today)
+            {
+                <p class="legenda3">
+                    Informe a data de hoje ou uma data futura!
+                </p>
+            }
+
+       }
+   }
+ }
+    
+
+@{ var ontem = Model.First();
+   if ((ontem.AgendaLivreLista.HorariosLivresOntem.Count() > 0) && (ontem.Action != "Index"))
+   {
+        <p class="legenda1">
+            Horários livres Dia-1 (@ontem.AgendaLivreLista.HorariosLivresOntem[0].Data)
+        </p>
+                              Html.Telerik().Grid(ontem.AgendaLivreLista.HorariosLivresOntem)
+                                      .Name("Ontem")
+                                      .DataKeys(dataKeys =>
+                                      {
+                                          dataKeys.Add(o => o.CdServico);
+                                          dataKeys.Add(o => o.CdProfissional).RouteKey("cdProfissional");
+                                          dataKeys.Add(o => o.DtInicio).RouteKey("dtInicio");
+                                          dataKeys.Add(o => o.DtFim).RouteKey("dtFim");
+                                      })
+                                      .DataBinding(dataBinding => dataBinding
+                                          .Server()
+                                              .Select("Salvar", "Agenda")
+                                      )
+
+                                      .Columns(columns =>
+                                      {
+                                          columns.Command(commands =>
+                                          {
+                                              commands.Select();
+                                          }).Width(130).Title("Opção");
+                                          columns.Bound(o => o.NomeProfissional).Title("Profissional").Width(250);
+                                          columns.Bound(o => o.Data).Title("Data").Width(250);
+                                          columns.Bound(o => o.Inicio).Title("Inicio").Width(250);
+                                          columns.Bound(o => o.Fim).Title("Final").Width(250);
+                                          columns.Bound(o => o.NomeEstabelecimento).Title("Estabelecimento").Width(250);
+                                      })
+                                      .Footer(false)
+                                      .Render();
+   }
+}
+
+@{ var hoje = Model.First();
+   if ((hoje.AgendaLivreLista.HorariosLivresHoje.Count() > 0) && (ontem.Action != "Index"))
+   {
+        <p class="legenda1">
+            Horários livres em @hoje.AgendaLivreLista.HorariosLivresHoje[0].Data
+        </p>
+                    Html.Telerik().Grid(hoje.AgendaLivreLista.HorariosLivresHoje)
+                                  .Name("Hoje")
+                                  .DataKeys(dataKeys => 
+                                  {
+                                      dataKeys.Add(o => o.CdServico);
+                                      dataKeys.Add(o => o.CdProfissional).RouteKey("cdProfissional");
+                                      dataKeys.Add(o => o.DtInicio).RouteKey("dtInicio");
+                                      dataKeys.Add(o => o.DtFim).RouteKey("dtFim");                                     
+                                  })
+                                  .DataBinding(dataBinding => dataBinding
+                                      .Server()
+                                          .Select("Salvar", "Agenda")
+                                  )
+
+                                  .Columns(columns =>
+                                  {
+                                      columns.Command(commands =>
+                                      {
+                                          commands.Select();
+                                      }).Width(130).Title("Opção");
+                                      columns.Bound(o => o.NomeProfissional).Title("Profissional").Width(250);
+                                      columns.Bound(o => o.Data).Title("Data").Width(250);
+                                      columns.Bound(o => o.Inicio).Title("Inicio").Width(250);
+                                      columns.Bound(o => o.Fim).Title("Final").Width(250);
+                                      columns.Bound(o => o.NomeEstabelecimento).Title("Estabelecimento").Width(250);
+                                  })
+                                  .Footer(false)
+                                  .Render();
+
+   }
+}
+
+@{ var amanha = Model.First();
+   if ((amanha.AgendaLivreLista.HorariosLivresAmanha.Count() > 0) && (ontem.Action != "Index"))
+   {
+        <p class="legenda1">
+            Horários livres Dia+1 (@amanha.AgendaLivreLista.HorariosLivresAmanha[0].Data)
+        </p>
+                             Html.Telerik().Grid(ontem.AgendaLivreLista.HorariosLivresAmanha)
+                                     .Name("Hoje")
+                                     .DataKeys(dataKeys =>
+                                     {
+                                         dataKeys.Add(o => o.CdServico);
+                                         dataKeys.Add(o => o.CdProfissional).RouteKey("cdProfissional");
+                                         dataKeys.Add(o => o.DtInicio).RouteKey("dtInicio");
+                                         dataKeys.Add(o => o.DtFim).RouteKey("dtFim");
+                                     })
+                                     .DataBinding(dataBinding => dataBinding
+                                         .Server()
+                                             .Select("Salvar", "Agenda")
+                                     )
+
+                                     .Columns(columns =>
+                                     {
+                                         columns.Command(commands =>
+                                         {
+                                             commands.Select();
+                                         }).Width(130).Title("Opção");
+                                         columns.Bound(o => o.NomeProfissional).Title("Profissional").Width(250);
+                                         columns.Bound(o => o.Data).Title("Data").Width(250);
+                                         columns.Bound(o => o.Inicio).Title("Inicio").Width(250);
+                                         columns.Bound(o => o.Fim).Title("Final").Width(250);
+                                         columns.Bound(o => o.NomeEstabelecimento).Title("Estabelecimento").Width(250);
+                                     })
+                                     .Footer(false)
+                                     .Render();
+   }
+}
+
+@{ var livres = Model.First();
+   if (((livres.AgendaLivreLista.HorariosLivresOntem.Count() > 0) ||
+        (livres.AgendaLivreLista.HorariosLivresHoje.Count() > 0) ||
+        (livres.AgendaLivreLista.HorariosLivresAmanha.Count() > 0)) && (ontem.Action != "Index") ||
+        (livres.ServicoFiltro == "!!Cadastrado!!"))
+   {
+       
+        <p class="legenda2">
+        As linhas rosas e brancas representam horários livres.
+        As caixas representam horários marcados.
+        </p>
+
+       if (!Roles.IsUserInRole("ADMIN"))
+       {
+           //Cria o componente Scheduler na visão do Cliente (mais estreito)
+            <div id="scheduler_here" class="dhx_cal_container" style='width:724px; height:600px;'>
+		            <div class="dhx_cal_navline">
+			            <div class="dhx_cal_prev_button">&nbsp;</div>
+			            <div class="dhx_cal_next_button">&nbsp;</div>
+			            <div class="dhx_cal_today_button">Hoje</div>
+			            <div class="dhx_cal_date"></div>
+			            <div class="dhx_cal_tab" name="unit_tab" style="right:230px;">Profissional</div>
+		            </div>
+		            <div class="dhx_cal_header">
+		            </div>
+		            <div class="dhx_cal_data">
+		            </div>		
+            </div>
+       }
+       else
+       {
+           //Cria o componente Scheduler na visão do Admin (mais largo)
+            <div id="scheduler_here" class="dhx_cal_container" style='width:980px; height:600px;'>
+		            <div class="dhx_cal_navline">
+			            <div class="dhx_cal_prev_button">&nbsp;</div>
+			            <div class="dhx_cal_next_button">&nbsp;</div>
+			            <div class="dhx_cal_today_button">Hoje</div>
+			            <div class="dhx_cal_date"></div>
+			            <div class="dhx_cal_tab" name="day_tab" style="right:204px;">Dia</div>
+			            <div class="dhx_cal_tab" name="week_tab" style="right:140px;">Semana</div>
+			            <div class="dhx_cal_tab" name="unit_tab" style="right:280px;">Profissional</div>
+			            <div class="dhx_cal_tab" name="month_tab" style="right:76px;">Mes</div>
+		            </div>
+		            <div class="dhx_cal_header">
+		            </div>
+		            <div class="dhx_cal_data">
+		            </div>		
+            </div>
+        }
+   }
+}
+
+@*<table class="busca">
+    <tr>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Profissional
+        </th>
+        <th>
+            Servico
+        </th>
+        <th>
+            MotivoCancel
+        </th>
+        <th>
+            Data Cadastro
+        </th>
+        <th>
+            Data Inicio
+        </th>
+        <th>
+            Data Fim
+        </th>
+        <th>
+            Data Cancelamento
+        </th>
+        <th>
+            Data Conclusao
+        </th>
+        <th></th>
+    </tr>
+
+@{var agenda = Model.First();
+
+  foreach (var item in agenda.Agendamentos)
+  {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Pessoa.DsNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profissional.Pessoa.DsNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servico.DsNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DsMotivoCancel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtCancelamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtConclusao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CdAgenda }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CdAgenda }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CdAgenda })
+            </td>
+        </tr>
+    }
+}
+
+</table>*@

@@ -1,0 +1,64 @@
+﻿@model AgendaMeMVC3.Models.Agenda
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="admtitle2"><a href="#">Excluir Agendamento</a></h2>
+
+<h3>Deseja realmente excluir o Agendamento?</h3>
+<fieldset>
+    <legend>Agenda</legend>
+
+    
+    <div class="display-label">Data Cadastro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtCadastro)
+    </div>   
+
+    <div class="display-label">Servico</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CdServico)
+    </div>
+
+    <div class="display-label">Cliente</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CdCliente)
+    </div>
+
+    <div class="display-label">Profissional</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CdProfissional)
+    </div>
+
+    <div class="display-label">Data Início</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtInicio)
+    </div>
+
+    <div class="display-label">Data Fim</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtFim)
+    </div>
+    
+    <div class="display-label">Data Conclusão</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtConclusao)
+    </div>
+
+    <div class="display-label">Data Cancelamento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DtCancelamento)
+    </div>
+
+    <div class="display-label">Motivo do Cancelamento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DsMotivoCancel)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Excluir" /> |
+        @Html.ActionLink("Voltar a Lista", "Index")
+    </p>
+}

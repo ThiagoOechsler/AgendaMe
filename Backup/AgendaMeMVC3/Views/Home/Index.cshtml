@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+    @if (Roles.IsUserInRole("ADMIN"))
+    {
+        <h2 class="admtitle"><a href="#">Olá administrador!</a></h2>
+			<div class="admentry">
+				<p><img src="Content/agendame/images/tesoura.jpg" alt="" width="230" height="222" class="left" /> Utilize os cadastros disponíveis para customizar as informações do seu negócio.</p>
+				<p> O <b><em>Agenda-me!</em></b> utiliza ASPNET MV3 com banco de dados SQL Server</p>
+			</div>
+    }
+    else
+    {
+        <h2 class="title"><a href="#">Bem vindo ao Agenda-me!</a></h2>
+			<div class="entry">
+				<p><img src="Content/agendame/images/apresentacao2.jpg" alt="" width="230" height="222" class="left" /> <strong>Cabelos e Cia</strong> é um salão de beleza de exemplo para seu site de salão de beleza com o sistema <b><em>Agenda-me!</em></b></p>
+				<p>Usando o sistema <b><em>Agenda-me!</em></b> o seu cliente pode verificar a agenda do seu estabelecimento e agendar um horário para qualquer serviço que desejar. Tudo online e 24 horas por dia! <em>   Aproveite!</em> </p>
+			</div>
+    }
+
+    

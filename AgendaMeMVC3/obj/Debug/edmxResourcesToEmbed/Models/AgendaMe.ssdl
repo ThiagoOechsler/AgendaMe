@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgendaMeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="AgendaMeModelStoreContainer">
+    <EntitySet Name="Agenda" EntityType="AgendaMeModel.Store.Agenda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bairro" EntityType="AgendaMeModel.Store.Bairro" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cidade" EntityType="AgendaMeModel.Store.Cidade" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cliente" EntityType="AgendaMeModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empresa" EntityType="AgendaMeModel.Store.Empresa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Estabelecimento" EntityType="AgendaMeModel.Store.Estabelecimento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pacote" EntityType="AgendaMeModel.Store.Pacote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PacoteServico" EntityType="AgendaMeModel.Store.PacoteServico" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pessoa" EntityType="AgendaMeModel.Store.Pessoa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profissional" EntityType="AgendaMeModel.Store.Profissional" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfissionalServico" EntityType="AgendaMeModel.Store.ProfissionalServico" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Promocao" EntityType="AgendaMeModel.Store.Promocao" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Servico" EntityType="AgendaMeModel.Store.Servico" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoServico" EntityType="AgendaMeModel.Store.TipoServico" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Agenda_Cliente" Association="AgendaMeModel.Store.FK_Agenda_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Agenda" EntitySet="Agenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agenda_Profissional" Association="AgendaMeModel.Store.FK_Agenda_Profissional">
+      <End Role="Profissional" EntitySet="Profissional" />
+      <End Role="Agenda" EntitySet="Agenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agenda_Servico" Association="AgendaMeModel.Store.FK_Agenda_Servico">
+      <End Role="Servico" EntitySet="Servico" />
+      <End Role="Agenda" EntitySet="Agenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bairro_Cidade" Association="AgendaMeModel.Store.FK_Bairro_Cidade">
+      <End Role="Cidade" EntitySet="Cidade" />
+      <End Role="Bairro" EntitySet="Bairro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Pessoa" Association="AgendaMeModel.Store.FK_Cliente_Pessoa">
+      <End Role="Pessoa" EntitySet="Pessoa" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estabelecimento_Bairro" Association="AgendaMeModel.Store.FK_Estabelecimento_Bairro">
+      <End Role="Bairro" EntitySet="Bairro" />
+      <End Role="Estabelecimento" EntitySet="Estabelecimento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estabelecimento_Empresa" Association="AgendaMeModel.Store.FK_Estabelecimento_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Estabelecimento" EntitySet="Estabelecimento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacote_Promocao" Association="AgendaMeModel.Store.FK_Pacote_Promocao">
+      <End Role="Promocao" EntitySet="Promocao" />
+      <End Role="Pacote" EntitySet="Pacote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PacoteServico_Pacote" Association="AgendaMeModel.Store.FK_PacoteServico_Pacote">
+      <End Role="Pacote" EntitySet="Pacote" />
+      <End Role="PacoteServico" EntitySet="PacoteServico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PacoteServico_Servico" Association="AgendaMeModel.Store.FK_PacoteServico_Servico">
+      <End Role="Servico" EntitySet="Servico" />
+      <End Role="PacoteServico" EntitySet="PacoteServico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profissional_Estabelecimento" Association="AgendaMeModel.Store.FK_Profissional_Estabelecimento">
+      <End Role="Estabelecimento" EntitySet="Estabelecimento" />
+      <End Role="Profissional" EntitySet="Profissional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profissional_Pessoa" Association="AgendaMeModel.Store.FK_Profissional_Pessoa">
+      <End Role="Pessoa" EntitySet="Pessoa" />
+      <End Role="Profissional" EntitySet="Profissional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfissionalServico_Profissional" Association="AgendaMeModel.Store.FK_ProfissionalServico_Profissional">
+      <End Role="Profissional" EntitySet="Profissional" />
+      <End Role="ProfissionalServico" EntitySet="ProfissionalServico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfissionalServico_Servico" Association="AgendaMeModel.Store.FK_ProfissionalServico_Servico">
+      <End Role="Servico" EntitySet="Servico" />
+      <End Role="ProfissionalServico" EntitySet="ProfissionalServico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Promocao_Estabelecimento" Association="AgendaMeModel.Store.FK_Promocao_Estabelecimento">
+      <End Role="Estabelecimento" EntitySet="Estabelecimento" />
+      <End Role="Promocao" EntitySet="Promocao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servico_TipoServico" Association="AgendaMeModel.Store.FK_Servico_TipoServico">
+      <End Role="TipoServico" EntitySet="TipoServico" />
+      <End Role="Servico" EntitySet="Servico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoServico_Estabelecimento" Association="AgendaMeModel.Store.FK_TipoServico_Estabelecimento">
+      <End Role="Estabelecimento" EntitySet="Estabelecimento" />
+      <End Role="TipoServico" EntitySet="TipoServico" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Agenda">
+    <Key>
+      <PropertyRef Name="CdAgenda" />
+    </Key>
+    <Property Name="CdAgenda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CdCliente" Type="int" />
+    <Property Name="CdProfissional" Type="int" />
+    <Property Name="CdServico" Type="int" />
+    <Property Name="DsMotivoCancel" Type="varchar" MaxLength="250" />
+    <Property Name="DtCadastro" Type="datetime" Nullable="false" />
+    <Property Name="DtInicio" Type="datetime" Nullable="false" />
+    <Property Name="DtFim" Type="datetime" Nullable="false" />
+    <Property Name="DtCancelamento" Type="datetime" />
+    <Property Name="DtConclusao" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Bairro">
+    <Key>
+      <PropertyRef Name="CdBairro" />
+    </Key>
+    <Property Name="CdBairro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsBairro" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="CdCidade" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cidade">
+    <Key>
+      <PropertyRef Name="CdCidade" />
+    </Key>
+    <Property Name="CdCidade" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="CdCliente" />
+    </Key>
+    <Property Name="CdCliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BooLembrar" Type="bit" />
+    <Property Name="DtNascimento" Type="datetime" />
+    <Property Name="CdPessoa" Type="int" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="CdEmpresa" />
+    </Key>
+    <Property Name="CdEmpresa" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Estabelecimento">
+    <Key>
+      <PropertyRef Name="CdEstabelecimento" />
+    </Key>
+    <Property Name="CdEmpresa" Type="int" Nullable="false" />
+    <Property Name="CdEstabelecimento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="NrCep" Type="numeric" />
+    <Property Name="DsRua" Type="varchar" MaxLength="250" />
+    <Property Name="HrAtendInicioManha" Type="datetime" Nullable="false" />
+    <Property Name="HrAtendFimManha" Type="datetime" Nullable="false" />
+    <Property Name="HrAtendInicioTarde" Type="datetime" Nullable="false" />
+    <Property Name="HrAtendFimTarde" Type="datetime" Nullable="false" />
+    <Property Name="DsCpfCnpj" Type="varchar" Nullable="false" MaxLength="14" />
+    <Property Name="DsFone1" Type="varchar" MaxLength="50" />
+    <Property Name="DsFone2" Type="varchar" MaxLength="50" />
+    <Property Name="CdBairro" Type="int" />
+  </EntityType>
+  <EntityType Name="Pacote">
+    <Key>
+      <PropertyRef Name="CdPacote" />
+    </Key>
+    <Property Name="CdPacote" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CdPromocao" Type="int" />
+    <Property Name="DsPacote" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="NrValor" Type="numeric" Scale="2" />
+  </EntityType>
+  <EntityType Name="PacoteServico">
+    <Key>
+      <PropertyRef Name="CdPacote" />
+      <PropertyRef Name="CdServico" />
+    </Key>
+    <Property Name="CdPacote" Type="int" Nullable="false" />
+    <Property Name="CdServico" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="CdPessoa" />
+    </Key>
+    <Property Name="CdPessoa" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="DsEmail" Type="varchar" MaxLength="150" />
+    <Property Name="DsFone1" Type="varchar" MaxLength="50" />
+    <Property Name="DsFone2" Type="varchar" MaxLength="50" />
+    <Property Name="DsLogin" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DsSenha" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DsCpfCnpj" Type="varchar" Nullable="false" MaxLength="14" />
+    <Property Name="DsSobrenome" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CdUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Profissional">
+    <Key>
+      <PropertyRef Name="CdProfissional" />
+    </Key>
+    <Property Name="CdProfissional" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsOcupacao" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="HrAtendInicioManha" Type="datetime" />
+    <Property Name="HrAtendInicioTarde" Type="datetime" />
+    <Property Name="HrAtendFimManha" Type="datetime" />
+    <Property Name="HrAtendFimTarde" Type="datetime" />
+    <Property Name="CdPessoa" Type="int" />
+    <Property Name="CdEstabelecimento" Type="int" />
+  </EntityType>
+  <EntityType Name="ProfissionalServico">
+    <Key>
+      <PropertyRef Name="CdProfissional" />
+      <PropertyRef Name="CdServico" />
+    </Key>
+    <Property Name="CdProfissional" Type="int" Nullable="false" />
+    <Property Name="CdServico" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Promocao">
+    <Key>
+      <PropertyRef Name="CdPromocao" />
+    </Key>
+    <Property Name="CdPromocao" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CdEstabelecimento" Type="int" Nullable="false" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DtCadastro" Type="datetime" Nullable="false" />
+    <Property Name="DtFim" Type="datetime" Nullable="false" />
+    <Property Name="DtInicio" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servico">
+    <Key>
+      <PropertyRef Name="CdServico" />
+    </Key>
+    <Property Name="CdServico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="CdTipoServico" Type="int" />
+    <Property Name="NrDuracaoHoras" Type="numeric" />
+    <Property Name="NrDuracaoMinutos" Type="numeric" />
+    <Property Name="ChSexo" Type="char" MaxLength="1" />
+    <Property Name="CdProfissional" Type="int" />
+    <Property Name="NrValor" Type="numeric" Scale="2" />
+  </EntityType>
+  <EntityType Name="TipoServico">
+    <Key>
+      <PropertyRef Name="CdTipoServico" />
+    </Key>
+    <Property Name="CdTipoServico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CdEstabelecimento" Type="int" Nullable="false" />
+    <Property Name="DsNome" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Agenda_Cliente">
+    <End Role="Cliente" Type="AgendaMeModel.Store.Cliente" Multiplicity="0..1" />
+    <End Role="Agenda" Type="AgendaMeModel.Store.Agenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="CdCliente" />
+      </Principal>
+      <Dependent Role="Agenda">
+        <PropertyRef Name="CdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agenda_Profissional">
+    <End Role="Profissional" Type="AgendaMeModel.Store.Profissional" Multiplicity="0..1" />
+    <End Role="Agenda" Type="AgendaMeModel.Store.Agenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profissional">
+        <PropertyRef Name="CdProfissional" />
+      </Principal>
+      <Dependent Role="Agenda">
+        <PropertyRef Name="CdProfissional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agenda_Servico">
+    <End Role="Servico" Type="AgendaMeModel.Store.Servico" Multiplicity="0..1" />
+    <End Role="Agenda" Type="AgendaMeModel.Store.Agenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servico">
+        <PropertyRef Name="CdServico" />
+      </Principal>
+      <Dependent Role="Agenda">
+        <PropertyRef Name="CdServico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bairro_Cidade">
+    <End Role="Cidade" Type="AgendaMeModel.Store.Cidade" Multiplicity="1" />
+    <End Role="Bairro" Type="AgendaMeModel.Store.Bairro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cidade">
+        <PropertyRef Name="CdCidade" />
+      </Principal>
+      <Dependent Role="Bairro">
+        <PropertyRef Name="CdCidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Pessoa">
+    <End Role="Pessoa" Type="AgendaMeModel.Store.Pessoa" Multiplicity="0..1" />
+    <End Role="Cliente" Type="AgendaMeModel.Store.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pessoa">
+        <PropertyRef Name="CdPessoa" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="CdPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estabelecimento_Bairro">
+    <End Role="Bairro" Type="AgendaMeModel.Store.Bairro" Multiplicity="0..1" />
+    <End Role="Estabelecimento" Type="AgendaMeModel.Store.Estabelecimento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bairro">
+        <PropertyRef Name="CdBairro" />
+      </Principal>
+      <Dependent Role="Estabelecimento">
+        <PropertyRef Name="CdBairro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estabelecimento_Empresa">
+    <End Role="Empresa" Type="AgendaMeModel.Store.Empresa" Multiplicity="1" />
+    <End Role="Estabelecimento" Type="AgendaMeModel.Store.Estabelecimento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="CdEmpresa" />
+      </Principal>
+      <Dependent Role="Estabelecimento">
+        <PropertyRef Name="CdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacote_Promocao">
+    <End Role="Promocao" Type="AgendaMeModel.Store.Promocao" Multiplicity="0..1" />
+    <End Role="Pacote" Type="AgendaMeModel.Store.Pacote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Promocao">
+        <PropertyRef Name="CdPromocao" />
+      </Principal>
+      <Dependent Role="Pacote">
+        <PropertyRef Name="CdPromocao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PacoteServico_Pacote">
+    <End Role="Pacote" Type="AgendaMeModel.Store.Pacote" Multiplicity="1" />
+    <End Role="PacoteServico" Type="AgendaMeModel.Store.PacoteServico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacote">
+        <PropertyRef Name="CdPacote" />
+      </Principal>
+      <Dependent Role="PacoteServico">
+        <PropertyRef Name="CdPacote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PacoteServico_Servico">
+    <End Role="Servico" Type="AgendaMeModel.Store.Servico" Multiplicity="1" />
+    <End Role="PacoteServico" Type="AgendaMeModel.Store.PacoteServico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servico">
+        <PropertyRef Name="CdServico" />
+      </Principal>
+      <Dependent Role="PacoteServico">
+        <PropertyRef Name="CdServico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profissional_Estabelecimento">
+    <End Role="Estabelecimento" Type="AgendaMeModel.Store.Estabelecimento" Multiplicity="0..1" />
+    <End Role="Profissional" Type="AgendaMeModel.Store.Profissional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estabelecimento">
+        <PropertyRef Name="CdEstabelecimento" />
+      </Principal>
+      <Dependent Role="Profissional">
+        <PropertyRef Name="CdEstabelecimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profissional_Pessoa">
+    <End Role="Pessoa" Type="AgendaMeModel.Store.Pessoa" Multiplicity="0..1" />
+    <End Role="Profissional" Type="AgendaMeModel.Store.Profissional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pessoa">
+        <PropertyRef Name="CdPessoa" />
+      </Principal>
+      <Dependent Role="Profissional">
+        <PropertyRef Name="CdPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfissionalServico_Profissional">
+    <End Role="Profissional" Type="AgendaMeModel.Store.Profissional" Multiplicity="1" />
+    <End Role="ProfissionalServico" Type="AgendaMeModel.Store.ProfissionalServico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profissional">
+        <PropertyRef Name="CdProfissional" />
+      </Principal>
+      <Dependent Role="ProfissionalServico">
+        <PropertyRef Name="CdProfissional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfissionalServico_Servico">
+    <End Role="Servico" Type="AgendaMeModel.Store.Servico" Multiplicity="1" />
+    <End Role="ProfissionalServico" Type="AgendaMeModel.Store.ProfissionalServico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servico">
+        <PropertyRef Name="CdServico" />
+      </Principal>
+      <Dependent Role="ProfissionalServico">
+        <PropertyRef Name="CdServico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Promocao_Estabelecimento">
+    <End Role="Estabelecimento" Type="AgendaMeModel.Store.Estabelecimento" Multiplicity="1" />
+    <End Role="Promocao" Type="AgendaMeModel.Store.Promocao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estabelecimento">
+        <PropertyRef Name="CdEstabelecimento" />
+      </Principal>
+      <Dependent Role="Promocao">
+        <PropertyRef Name="CdEstabelecimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servico_TipoServico">
+    <End Role="TipoServico" Type="AgendaMeModel.Store.TipoServico" Multiplicity="0..1" />
+    <End Role="Servico" Type="AgendaMeModel.Store.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoServico">
+        <PropertyRef Name="CdTipoServico" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="CdTipoServico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoServico_Estabelecimento">
+    <End Role="Estabelecimento" Type="AgendaMeModel.Store.Estabelecimento" Multiplicity="1" />
+    <End Role="TipoServico" Type="AgendaMeModel.Store.TipoServico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estabelecimento">
+        <PropertyRef Name="CdEstabelecimento" />
+      </Principal>
+      <Dependent Role="TipoServico">
+        <PropertyRef Name="CdEstabelecimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

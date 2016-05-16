@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AgendaMeMVC3.Models.Cidade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="admtitle2"><a href="#">Cidades</a></h2>
+
+<p>
+    @Html.ActionLink("Nova Cidade", "Create")
+</p>
+
+<p>
+    @{Html.Telerik().Grid(Model)
+                .Name("Cidades")  //Se voce der o nome aqui, o CSS vai aplicar 
+                .DataKeys(dataKeys => dataKeys.Add(o => o.CdCidade).RouteKey("CdCidade"))
+                .DataBinding(dataBinding => dataBinding
+                    .Server()
+                        .Select("Edit", "Cidade")
+                        .Update("Edit", "Cidade")
+                        .Delete("Delete", "Cidade", Model)
+                )
+                
+                .Columns(columns =>
+                {
+                    columns.Bound(o => o.DsNome).Title("Cidade").Width(300);
+                    columns.Command(commands =>
+                    {
+                        commands.Edit();
+                        commands.Delete();
+                    }).Width(200).Title("Opções");
+                })
+                .Render();
+            }
+</p>
